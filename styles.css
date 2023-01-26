@@ -35,15 +35,15 @@
   .left {
     height: 1000px;
     width: 45px;
-    background-color: #e0eeee;
+    background-color: #bfcfbb;
     float: left;
     position: fixed;
   }
   
   .right {
-    height: 1000px;
+    height: 1050px;
     width: 45px;
-    background-color: #e0eeee;
+    background-color: #bfcfbb;
     float: right;
     position: inherit;
   }
@@ -59,6 +59,7 @@
   p,
   li {
     font-family: 'Cormorant Garamond';
+    font-size: 15px;
   }
   
   .head {
