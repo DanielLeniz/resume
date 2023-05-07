@@ -9,12 +9,19 @@ terraform {
       version = "~> 4.16"
     }
   }
-}
+
+    backend "s3" {
+      profile = "main"
+      bucket = "danielleniz.com"
+      key    = "terraform.tfstate"
+      region = "us-east-1"
+    }
+  }
 
 provider "aws" {
   region = "us-east-1"
-  shared_credentials_files  = ["Users/Daniel/.aws/credentials"]
-  shared_config_files = ["Users/Daniel/.aws/config"]
+  shared_config_files = ["C:/Users/Daniel/.aws/config"]
+  shared_credentials_files = ["C:/Users/Daniel/.aws/credentials"]
   profile = "main"
 }
 
@@ -29,7 +36,7 @@ resource "docker_image" "nginx" {
 
 resource "docker_container" "nginx" {
   image = docker_image.nginx.image_id
-  name  = "tutorial"
+  name  = "resume"
 
   ports {
     internal = 80
@@ -37,10 +44,10 @@ resource "docker_container" "nginx" {
   }
 }
 resource "aws_instance" "app_server" {
-  ami           = "ami-830c94e3"
+  ami           = "ami-0889a44b331db0194"
   instance_type = "t2.micro"
 
   tags = {
-    Name = "ExampleAppServerInstance"
+    Name = "ResumeServerInstance"
   }
 }

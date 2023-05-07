@@ -32,6 +32,10 @@
     clear: both;
     position: relative;
   }
+
+  .occupation {
+    font-style: italic;
+  }
   
   .left {
     height: 1000px;
@@ -92,6 +96,8 @@
     color: rgb(190, 78, 78);
     
   }
+
+
   
   @media only screen and (max-width: 430px) {
     .left,
