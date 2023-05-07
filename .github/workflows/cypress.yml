@@ -16,12 +16,11 @@ jobs:
       matrix:
         containers: [1, 2] # Uses 2 parallel instances
     steps:
-      - uses: cypress-io/github-action@v5.7.1
       - name: Checkout
         uses: actions/checkout@v3
       - name: Cypress run
         # Uses the official Cypress GitHub action https://github.com/cypress-io/github-action
-        uses: cypress-io/github-action@v5
+        uses: cypress-io/github-action@v5.7.1
         with:
           build: npm run build
           # Starts web server for E2E tests - replace with your own server invocation
