@@ -1,8 +1,8 @@
 module.exports = {
-  projectId: "pjmd6q",
+  projectId: "brccth",
   e2e: {
     setupNodeEvents(on, config) {
       // implement node event listeners here
     },
-  },
+  }, 
 };

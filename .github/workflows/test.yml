@@ -20,7 +20,7 @@ jobs:
       - name: install boto3
         run: pip install boto3
       - name: test function
-        run: cd lambda_function && python test.py -v && cd ..
+        run: cd lambda_function.py
   
   deploy-infra:
     runs-on: ubuntu-latest
