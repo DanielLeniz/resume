@@ -32,8 +32,8 @@ module "tf-state" {
 }
 provider "aws" {
   region                   = "us-east-1"
-  shared_config_files      = ["C:/Users/Daniel/.aws/config"]
-  shared_credentials_files = ["C:/Users/Daniel/.aws/credentials"]
+  shared_config_files      = ["C:/Users/Daniel/.aws/config/"]
+  shared_credentials_files = ["C:/Users/Daniel/.aws/credentials/"]
   profile                  = "main"
 }
 
