@@ -5,10 +5,7 @@ terraform {
       version = "4.66.1"
     }
   }
-
-
   backend "s3" {
-
     bucket         = "backend-resume"
     key            = "tf-infra/terraform.tfstate"
     region         = "us-east-1"
