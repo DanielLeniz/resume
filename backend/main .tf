@@ -9,6 +9,9 @@ terraform {
       version = "4.66.1"
     }
   }
+    cloud {
+      organization = "dleniz"
+    }
 
     backend "s3" {
       profile = "main"
