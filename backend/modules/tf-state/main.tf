@@ -164,7 +164,7 @@ resource "aws_api_gateway_stage" "api-stage" {
 resource "aws_lambda_permission" "lambda-permission-to-api" {
   statement_id  = "AllowAPIGatewayInvoke"
   action        = "lambda:InvokeFunction"
-  function_name = "lambda-view-counter-function"
+  function_name = "view-counter-function"
   principal     = "apigateway.amazonaws.com"
 
   source_arn = "${aws_api_gateway_rest_api.api-to-lambda-view-count.execution_arn}/${aws_api_gateway_stage.api-stage.stage_name}/${aws_api_gateway_method.api-post-method.http_method}/${aws_api_gateway_resource.api-resource.path_part}"
