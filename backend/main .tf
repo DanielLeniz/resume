@@ -1,9 +1,5 @@
 terraform {
   required_providers {
-    docker = {
-      source  = "kreuzwerker/docker"
-      version = "3.0.2"
-    }
     aws = {
       source  = "hashicorp/aws"
       version = "4.66.1"
@@ -12,9 +8,9 @@ terraform {
 
 
   backend "s3" {
-    profile        = "main"
+
     bucket         = "backend-resume"
-    key            = "terraform.tfstate"
+    key            = "tf-infra/terraform.tfstate"
     region         = "us-east-1"
     dynamodb_table = "terraform-state-locking"
     encrypt        = true
@@ -29,6 +25,16 @@ module "s3-bucket" {
 module "tf-state" {
   source      = "./modules/tf-state"
   bucket_name = "backend-resume"
+}
+
+module "vpc-infra" {
+  source = "./modules/tf-state/vpc"
+
+  # VPC Input Vars
+  vpc_cidr             = local.vpc_cidr
+  availability_zones   = local.availability_zones
+  public_subnet_cidrs  = local.public_subnet_cidrs
+  private_subnet_cidrs = local.private_subnet_cidrs
 }
 provider "aws" {
   region                   = "us-east-1"

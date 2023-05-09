@@ -60,5 +60,5 @@ jobs:
       if: steps.plan.outcome == 'failure'
       run: exit 1
 
-    - name: Terraform Apply'
+    - name: Terraform Apply
       run: terraform apply -auto-approve
