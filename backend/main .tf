@@ -11,15 +11,15 @@ terraform {
   }
 
 
-    backend "s3" {
-      profile = "main"
-      bucket = "backend-resume"
-      key    = "tf-infra/terraform.tfstate"
-      region = "us-east-1"
-      dynamodb_table = "terraform-state-locking"
-      encrypt = true
-    }
+  backend "s3" {
+    profile        = "main"
+    bucket         = "backend-resume"
+    key            = "tf-infra/terraform.tfstate"
+    region         = "us-east-1"
+    dynamodb_table = "terraform-state-locking"
+    encrypt        = true
   }
+}
 
 module "s3-bucket" {
   source  = "terraform-aws-modules/s3-bucket/aws"
@@ -27,14 +27,14 @@ module "s3-bucket" {
 }
 
 module "tf-state" {
-  source = "./modules/tf-state"
+  source      = "./modules/tf-state"
   bucket_name = "backend-resume"
 }
 provider "aws" {
-  region = "us-east-1"
-  shared_config_files = ["C:/Users/Daniel/.aws/config"]
+  region                   = "us-east-1"
+  shared_config_files      = ["C:/Users/Daniel/.aws/config"]
   shared_credentials_files = ["C:/Users/Daniel/.aws/credentials"]
-  profile = "main"
+  profile                  = "main"
 }
 
 provider "docker" {
