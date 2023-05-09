@@ -1,4 +1,7 @@
 /backend/.terraform/
-/node_modules
+/node_modules/
 /backend/.terraform.lock.hcl
+/cypress.config.js
+/package.json
+/package-lock.json
 
