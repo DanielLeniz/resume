@@ -10,7 +10,7 @@ describe('Test homepage content', () =>
   it('Checks for Visitor Counter', {defaultCommandTimeout: 10000}, ()=>{
     cy.visit('https://danielleniz.com')
     //Checks vistor counter text displays
-    cy.contains('People have Visited this Site')
+    cy.contains('You are visitor')
     //Checks that visitor count is integer
     cy.get('[class=counter-number]')
     .invoke('text')

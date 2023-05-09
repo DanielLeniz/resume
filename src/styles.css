@@ -32,6 +32,10 @@
     clear: both;
     position: relative;
   }
+
+  .occupation {
+    font-style: italic;
+  }
   
   .left {
     height: 1000px;
@@ -59,19 +63,21 @@
   .counter-number {
     font-family: 'Cormorant Garamond';
     font-size: 15px;
-    font-weight: 500;
+    font-weight: 550;
+    float: right;
   }
   p,
   li {
     font-family: 'Cormorant Garamond';
     font-size: 15px;
-    font-weight: 550;
+    font-weight: 500;
   }
   
   .head {
     font-size: 25px;
     font-weight: bold;
     font-family: 'Cormorant Garamond';
+    font-style: italic;
   }
   
   .contact {
@@ -90,6 +96,8 @@
     color: rgb(190, 78, 78);
     
   }
+
+
   
   @media only screen and (max-width: 430px) {
     .left,
