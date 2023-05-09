@@ -118,7 +118,12 @@ resource "aws_api_gateway_method" "api-post-method" {
   resource_id   = aws_api_gateway_resource.api-resource.id
   rest_api_id   = aws_api_gateway_rest_api.api-to-lambda-view-count.id
 }
-
+resource "aws_api_gateway_method" "api-post-method" {
+  authorization = "NONE"
+  http_method   = "GET"
+  resource_id   = aws_api_gateway_resource.api-resource.id
+  rest_api_id   = aws_api_gateway_rest_api.api-to-lambda-view-count.id
+}
 # Integration (link to Lambda function)
 resource "aws_api_gateway_integration" "api-lambda-integration" {
   rest_api_id             = aws_api_gateway_rest_api.api-to-lambda-view-count.id
