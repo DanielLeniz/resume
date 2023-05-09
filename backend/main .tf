@@ -9,18 +9,27 @@ terraform {
       version = "4.66.1"
     }
   }
-    cloud {
-      organization = "dleniz"
-    }
+
 
     backend "s3" {
       profile = "main"
-      bucket = "danielleniz.com"
-      key    = "terraform.tfstate"
+      bucket = "backend-resume"
+      key    = "tf-infra/terraform.tfstate"
       region = "us-east-1"
+      dynamodb_table = "terraform-state-locking"
+      encrypt = true
     }
   }
 
+module "s3-bucket" {
+  source  = "terraform-aws-modules/s3-bucket/aws"
+  version = "3.10.1"
+}
+
+module "tf-state" {
+  source = "./modules/tf-state"
+  bucket_name = "backend-resume"
+}
 provider "aws" {
   region = "us-east-1"
   shared_config_files = ["C:/Users/Daniel/.aws/config"]

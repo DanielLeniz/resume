@@ -1,5 +1,4 @@
+/backend/.terraform/
 /node_modules
-/.terraform
-/package.json
-/package-lock.json
-*.exe
+/backend/.terraform.lock.hcl
+
