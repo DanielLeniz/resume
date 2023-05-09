@@ -11,15 +11,15 @@ terraform {
   }
 
 
-  backend "s3" {
-    profile        = "main"
-    bucket         = "backend-resume"
-    key            = "tf-infra/terraform.tfstate"
-    region         = "us-east-1"
-    dynamodb_table = "terraform-state-locking"
-    encrypt        = true
+    backend "s3" {
+      profile = "main"
+      bucket = "backend-resume"
+      key    = "terraform.tfstate"
+      region = "us-east-1"
+      dynamodb_table = "terraform-state-locking"
+      encrypt = true
+    }
   }
-}
 
 module "s3-bucket" {
   source  = "terraform-aws-modules/s3-bucket/aws"
@@ -27,34 +27,16 @@ module "s3-bucket" {
 }
 
 module "tf-state" {
-  source      = "./modules/tf-state"
+  source = "./modules/tf-state"
   bucket_name = "backend-resume"
 }
 provider "aws" {
-  region                   = "us-east-1"
-  shared_config_files      = ["C:/Users/Daniel/.aws/config"]
+  region = "us-east-1"
+  shared_config_files = ["C:/Users/Daniel/.aws/config"]
   shared_credentials_files = ["C:/Users/Daniel/.aws/credentials"]
-  profile                  = "main"
+  profile = "main"
 }
 
-provider "docker" {
-  host = "npipe:////.//pipe//docker_engine"
-}
-
-resource "docker_image" "nginx" {
-  name         = "nginx"
-  keep_locally = false
-}
-
-resource "docker_container" "nginx" {
-  image = docker_image.nginx.image_id
-  name  = "resume"
-
-  ports {
-    internal = 80
-    external = 8000
-  }
-}
 resource "aws_instance" "app_server" {
   ami           = "ami-0889a44b331db0194"
   instance_type = "t2.micro"
