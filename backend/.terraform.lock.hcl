@@ -3,7 +3,7 @@
 
 provider "registry.terraform.io/hashicorp/aws" {
   version     = "4.66.1"
-  constraints = "~> 4.16"
+  constraints = "4.66.1"
   hashes = [
     "h1:oi2xfTwb5ZgjA1OluE4KThAQF4+1kN0yNbUu5053rsA=",
     "zh:001c707174b7d6bf89a96cf806f925bb852d1a285fb80b81222cbeb4743bcb79",
@@ -26,7 +26,7 @@ provider "registry.terraform.io/hashicorp/aws" {
 
 provider "registry.terraform.io/kreuzwerker/docker" {
   version     = "3.0.2"
-  constraints = "~> 3.0.1"
+  constraints = "3.0.2"
   hashes = [
     "h1:DcRxJArfX6EiATluWeCBW7HoD6usz9fMoTK2U3dmyPk=",
     "zh:15b0a2b2b563d8d40f62f83057d91acb02cd0096f207488d8b4298a59203d64f",
