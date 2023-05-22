@@ -56,11 +56,11 @@ resource "aws_iam_policy" "iam_policy_for_resume_project" {
           "Resource" : "arn:aws:logs:*:*:*",
           "Effect" : "Allow"
         },
-        {
+        { 
           "Effect" : "Allow",
           "Action" : [
             "dynamodb:UpdateItem",
-			      "dynamodb:GetItem"
+			      "dynamodb:GetItem",
             "dynamodb:PutItem"
           ],
           "Resource" : "arn:aws:dynamodb:*:*:table/view-count-table"
@@ -181,7 +181,7 @@ resource "aws_lambda_permission" "lambda-permission-to-api" {
 # --------------------------------------------------------------
 
 resource "aws_lambda_function_url" "url1" {
-  function_name      = aws_lambda_function.myfunc.function_name
+  function_name      = aws_lambda_function.view-counter-function.function_name
   authorization_type = "NONE"
 
   cors {
