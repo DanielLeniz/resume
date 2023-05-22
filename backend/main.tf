@@ -1,11 +1,3 @@
-terraform {
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "4.66.1"
-    }
-  }
-}
 resource "aws_dynamodb_table" "view-count-table" {
   name           = "view-count-table"
   billing_mode   = "PROVISIONED"
@@ -69,6 +61,7 @@ resource "aws_iam_policy" "iam_policy_for_resume_project" {
           "Action" : [
             "dynamodb:UpdateItem",
 			      "dynamodb:GetItem"
+            "dynamodb:PutItem"
           ],
           "Resource" : "arn:aws:dynamodb:*:*:table/view-count-table"
         },
