@@ -60,7 +60,7 @@ resource "aws_iam_policy" "iam_policy_for_resume_project" {
           "Effect" : "Allow",
           "Action" : [
             "dynamodb:UpdateItem",
-			      "dynamodb:GetItem"
+		"dynamodb:GetItem",
             "dynamodb:PutItem"
           ],
           "Resource" : "arn:aws:dynamodb:*:*:table/view-count-table"
