@@ -46,25 +46,43 @@ EOF
 }
 
 # Policy for Execution Role
-resource "aws_iam_role_policy" "lambda_access_to_dynamodb_cloudwatch" {
-  name   = "dynamodb_lambda_policy"
-  role   = aws_iam_role.iam_lambda_role.id
-  policy = <<EOF
-{
-  "Version": "2012-10-17",
-  "Statement": [
+resource "aws_iam_policy" "iam_policy_for_resume_project" {
+
+  name        = "aws_iam_policy_for_terraform_resume_project_policy"
+  path        = "/"
+  description = "AWS IAM Policy for managing the resume project role"
+    policy = jsonencode(
     {
-      "Effect": "Allow",
-      "Action": [
-        "logs:*",
-        "dynamodb:*"
-      ],
-      "Resource": "${aws_dynamodb_table.view-count-table.arn}"
-    }
-  ]
+      "Version" : "2012-10-17",
+      "Statement" : [
+        {
+          "Action" : [
+            "logs:CreateLogGroup",
+            "logs:CreateLogStream",
+            "logs:PutLogEvents"
+          ],
+          "Resource" : "arn:aws:logs:*:*:*",
+          "Effect" : "Allow"
+        },
+        {
+          "Effect" : "Allow",
+          "Action" : [
+            "dynamodb:UpdateItem",
+			      "dynamodb:GetItem"
+          ],
+          "Resource" : "arn:aws:dynamodb:*:*:table/view-count-table"
+        },
+      ]
+  })
 }
-EOF
+
+resource "aws_iam_role_policy_attachment" "attach_iam_policy_to_iam_role" {
+  role = aws_iam_role.iam_lambda_role.name
+  policy_arn = aws_iam_policy.iam_policy_for_resume_project.arn
+  
 }
+
+
 
 # Function
 data "archive_file" "lambda_zip" {                                                                                                                                                                                   
@@ -72,6 +90,8 @@ data "archive_file" "lambda_zip" {
   source_dir  = "./backend"                                                                                                                                                                                         
   output_path = "./backend/lambda_function.zip"                                                                                                                                                                         
 }             
+
+
 resource "aws_lambda_function" "view-counter-function" {
   function_name = "view-counter-function"
 
@@ -133,13 +153,6 @@ resource "aws_api_gateway_deployment" "api-deployment" {
   rest_api_id = aws_api_gateway_rest_api.api-to-lambda-view-count.id
 
   triggers = {
-    # NOTE: The configuration below will satisfy ordering considerations,
-    #       but not pick up all future REST API changes. More advanced patterns
-    #       are possible, such as using the filesha1() function against the
-    #       Terraform configuration file(s) or removing the .id references to
-    #       calculate a hash against whole resources. Be aware that using whole
-    #       resources will show a difference after the initial implementation.
-    #       It will stabilize to only change when resources change afterwards.
     redeployment = sha1(jsonencode([
       aws_api_gateway_resource.api-resource.id,
       aws_api_gateway_method.api-post-method.id,
@@ -174,11 +187,16 @@ resource "aws_lambda_permission" "lambda-permission-to-api" {
 # ////////       Enable CORS (API Gateway Cont'd)       ////////
 # --------------------------------------------------------------
 
+resource "aws_lambda_function_url" "url1" {
+  function_name      = aws_lambda_function.myfunc.function_name
+  authorization_type = "NONE"
 
-module "api-gateway-enable-cors" {
-  source  = "squidfunk/api-gateway-enable-cors/aws"
-  version = "0.3.3"
-
-  api_id          = aws_api_gateway_rest_api.api-to-lambda-view-count.id
-  api_resource_id = aws_api_gateway_resource.api-resource.id
+  cors {
+    allow_credentials = true
+    allow_origins     = ["*"]
+    allow_methods     = ["*"]
+    allow_headers     = ["date", "keep-alive"]
+    expose_headers    = ["keep-alive", "date"]
+    max_age           = 86400
+  }
 }
