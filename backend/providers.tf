@@ -2,15 +2,8 @@ terraform {
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = "4.66.1"
+      version = "4.67.0"
     }
-  }
-  backend "s3" {
-    bucket         = "backend-resume"
-    key            = "tf-infra/terraform.tfstate"
-    region         = "us-east-1"
-    dynamodb_table = "terraform-state-locking"
-    encrypt        = true
   }
 }
 
@@ -20,6 +13,6 @@ module "s3-bucket" {
 }
 provider "aws" {
   region                   = "us-east-1"
-  shared_config_files      = ["C:/Users/Daniel/.aws/config"]
-  shared_credentials_files = ["C:/Users/Daniel/.aws/credentials"]
+  shared_config_files      = ["/Users/mackenziegittinger/.aws/config"]
+  shared_credentials_files = ["/Users/mackenziegittinger/.aws/credentials"]
 }

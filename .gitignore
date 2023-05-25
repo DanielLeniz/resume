@@ -1,7 +1,11 @@
-/backend/.terraform/
-/node_modules/
-/backend/.terraform.lock.hcl
-/cypress.config.js
-/package.json
-/package-lock.json
+backend/terraform.tfstate
+backend/.terraform.lock.hcl
+backend/terraform.tfstate.backup
+backend/.terraform/
+cypress.config.js
+package.json
+package-lock.json
+cypress/fixtures/
+cypress/support/
 
+node_modules

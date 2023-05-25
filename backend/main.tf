@@ -1,5 +1,5 @@
-resource "aws_dynamodb_table" "view-count-table" {
-  name           = "view-count-table"
+resource "aws_dynamodb_table" "view-count" {
+  name           = "view-count"
   billing_mode   = "PROVISIONED"
   read_capacity  = 20
   write_capacity = 20
@@ -63,7 +63,7 @@ resource "aws_iam_policy" "iam_policy_for_resume_project" {
 			      "dynamodb:GetItem",
             "dynamodb:PutItem"
           ],
-          "Resource" : "arn:aws:dynamodb:*:*:table/view-count-table"
+          "Resource" : "arn:aws:dynamodb:*:*:table/view-count"
         },
       ]
   })
@@ -97,7 +97,7 @@ resource "aws_lambda_function" "view-counter-function" {
 
   environment {
     variables = {
-      TABLE_NAME = aws_dynamodb_table.view-count-table.id # Reference name of dynamodb table
+      TABLE_NAME = aws_dynamodb_table.view-count.id # Reference name of dynamodb table
     }
   }
 }
