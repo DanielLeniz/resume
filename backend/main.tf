@@ -43,7 +43,7 @@ resource "aws_iam_policy" "iam_policy_for_resume_project" {
   name        = "aws_iam_policy_for_terraform_resume_project_policy"
   path        = "/"
   description = "AWS IAM Policy for managing the resume project role"
-    policy = jsonencode(
+  policy = jsonencode(
     {
       "Version" : "2012-10-17",
       "Statement" : [
@@ -56,11 +56,11 @@ resource "aws_iam_policy" "iam_policy_for_resume_project" {
           "Resource" : "arn:aws:logs:*:*:*",
           "Effect" : "Allow"
         },
-        { 
+        {
           "Effect" : "Allow",
           "Action" : [
             "dynamodb:UpdateItem",
-			      "dynamodb:GetItem",
+            "dynamodb:GetItem",
             "dynamodb:PutItem"
           ],
           "Resource" : "arn:aws:dynamodb:*:*:table/view-count"
@@ -70,19 +70,19 @@ resource "aws_iam_policy" "iam_policy_for_resume_project" {
 }
 
 resource "aws_iam_role_policy_attachment" "attach_iam_policy_to_iam_role" {
-  role = aws_iam_role.iam_lambda_role.name
+  role       = aws_iam_role.iam_lambda_role.name
   policy_arn = aws_iam_policy.iam_policy_for_resume_project.arn
-  
+
 }
 
 
 
 # Function
-data "archive_file" "lambda_zip" {                                                                                                                                                                                   
-  type        = "zip"                                                                                                                                                                                                
+data "archive_file" "lambda_zip" {
+  type        = "zip"
   source_file = "${path.module}/lambda/lambda_function.py"
-  output_path = "${path.module}/lambda/lambda_function.zip"                                                                                                                                                                        
-}             
+  output_path = "${path.module}/lambda/lambda_function.zip"
+}
 
 
 resource "aws_lambda_function" "view-counter-function" {
