@@ -1,7 +1,7 @@
 import json
 import boto3
 dynamodb = boto3.resource('dynamodb')
-table = dynamodb.Table('view-count-table')
+table = dynamodb.Table('crc')
 def lambda_handler(event, context):
     
     response = table.get_item(Key={
