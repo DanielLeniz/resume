@@ -112,6 +112,16 @@ ul {
     
 }
 
+.about-profile-pic {
+    position: static;
+    display: block;
+    width: 600px;
+    height: 600px;
+    margin: auto;
+    padding: 30px;
+    
+}
+
 .about {
     text-align: center;
     margin: 20px 50px;
