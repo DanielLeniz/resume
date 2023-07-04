@@ -8,3 +8,4 @@ backend/terraform.tfstate.backup
 cypress.config.js
 package.json
 package-lock.json
+src/counter.js
