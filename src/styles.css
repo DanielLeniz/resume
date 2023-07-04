@@ -20,7 +20,7 @@ body {
     margin: 0;
 }
 
-.link-item > a {
+a {
     font-size: large;
     text-decoration: none;
     color: inherit;
@@ -104,6 +104,16 @@ ul {
     
 }
 
+.about-profile-pic {
+    position: static;
+    display: block;
+    width: 600px;
+    height: 600px;
+    margin: auto;
+    padding: 30px;
+    
+}
+
 .about {
     text-align: center;
     margin: 20px 50px;
@@ -118,20 +128,29 @@ ul {
 .about-description {
     font-size: 1.5rem;
     line-height: 1.5;
-
+    padding: 30px
 }
 
+.resume {
+    display: block;
+    margin: auto;
+    width: 70%;
+    image-rendering: auto;
+}
 .footer {
     font-size: 1.25rem;
     text-align: center;
-    padding: 10px 30px;
+    padding: 20px;
 }
 
 .footer > a {
     color:#4d4a38;
     padding: 10px;
+    text-decoration: underline;
+    line-height: 2;
 }
 .footer > p > a:link {
     color:#4d4a38;
+    text-decoration: underline;
 }
 
