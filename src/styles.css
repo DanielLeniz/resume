@@ -97,11 +97,9 @@ ul {
     position: static;
     display: inline;
     border-radius: 100%;
-    width: 550px;
-    height: 550px;
+    width: 40%;
     margin-left: 55%;
-    margin-top: -35%;
-    
+    margin-top: -35%;   
 }
 
 .about-profile-pic {
