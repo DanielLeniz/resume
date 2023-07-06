@@ -133,7 +133,6 @@ ul {
     display: block;
     margin: auto;
     width: 55%;
-    image-rendering: optimizeQuality;
 }
 .footer {
     font-size: 1.25rem;
