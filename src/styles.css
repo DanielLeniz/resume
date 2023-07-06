@@ -132,8 +132,8 @@ ul {
 .resume {
     display: block;
     margin: auto;
-    width: 70%;
-    image-rendering: auto;
+    width: 55%;
+    image-rendering: optimizeQuality;
 }
 .footer {
     font-size: 1.25rem;
