@@ -1,0 +1,153 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.header {
+    color: #f4f4f4;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 30px;
+    position: fixed;
+    width: 100%;
+    transition: all .5s;
+}
+
+body {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin: 0;
+}
+
+a {
+    font-size: large;
+    text-decoration: none;
+    color: inherit;
+}
+
+.home-name {
+    background: url('./assets/background.jpeg');
+    text-align: center;
+    font-size: 4rem;
+    color: #f4f4f4;
+    padding: 45vh 0;
+    width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: relative;
+}
+
+.about-name {
+    background: url('./assets/background.jpeg');
+    text-align: center;
+    font-size: 4rem;
+    color: #f4f4f4;
+    padding: 20vh 0;
+    width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: relative;
+}
+
+ul {
+    background-color: none;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-scrolled {
+    background-color: rgba(0,0,0,0.9);
+    color: rgb(88, 123, 87);
+   
+}
+
+.links {
+    display: flex;
+    column-gap: 40px;
+    
+}
+
+.link:hover {
+    color: #f4f4f4;
+}
+
+.logo {
+    font-size: xx-large;
+  }
+
+
+.introduction > p {
+    font-size: 3.5rem;
+    inline-size: 30%;
+    overflow-wrap: break-word;
+    margin-left: 10%;
+    margin-top: 5%;
+}
+
+.description {
+    text-align: center;
+    font-size: 1.5rem;
+    margin: 100px;
+    line-height: 1.5;
+}
+
+.profile-pic {
+    position: static;
+    display: inline;
+    border-radius: 100%;
+    width: 40%;
+    margin-left: 55%;
+    margin-top: -35%;   
+}
+
+.about-profile-pic {
+    position: static;
+    display: block;
+    width: 600px;
+    height: 600px;
+    margin: auto;
+    padding: 30px;
+    
+}
+
+.about {
+    text-align: center;
+    margin: 20px 50px;
+}
+
+.about-intro {
+    font-size: 2rem;
+    color:rgb(88, 123, 87);
+    padding: 35px;
+}
+
+.about-description {
+    font-size: 1.5rem;
+    line-height: 1.5;
+    padding: 30px
+}
+
+.resume {
+    display: block;
+    margin: auto;
+    width: 55%;
+}
+.footer {
+    font-size: 1.25rem;
+    text-align: center;
+    padding: 20px;
+}
+
+.footer > a {
+    color:#4d4a38;
+    padding: 10px;
+    text-decoration: underline;
+    line-height: 2;
+}
+.footer > p > a:link {
+    color:#4d4a38;
+    text-decoration: underline;
+}
+
