@@ -5,6 +5,7 @@ backend/.terraform/
 backend/.terraform.lock.hcl
 backend/terraform.tfstate
 backend/terraform.tfstate.backup
+backend/providers/
 cypress.config.js
 package.json
 package-lock.json
