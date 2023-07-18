@@ -77,13 +77,11 @@ ul {
     font-size: xx-large;
   }
 
-
 .introduction > p {
     font-size: 3.5rem;
     inline-size: 30%;
-    overflow-wrap: break-word;
-    margin-left: 10%;
-    margin-top: 5%;
+    margin-left: 150px;
+    margin-top: 100px;
 }
 
 .description {
@@ -95,11 +93,12 @@ ul {
 
 .profile-pic {
     position: static;
-    display: inline;
+    display: block;
     border-radius: 100%;
-    width: 40%;
-    margin-left: 55%;
-    margin-top: -35%;   
+    width: 600px;
+    margin-left: 1000px;
+    margin-top: -400px;
+
 }
 
 .about-profile-pic {
