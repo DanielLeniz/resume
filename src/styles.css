@@ -1,7 +1,6 @@
 * {
     padding: 0;
     margin: 0;
-    box-sizing: border-box;
 }
 
 .header {
@@ -9,7 +8,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 20px 30px;
+    padding: 25px 30px;
     position: fixed;
     width: 100%;
     transition: all .5s;
@@ -28,26 +27,28 @@ a {
 
 .home-name {
     background: url('./assets/background.jpeg');
-    text-align: center;
-    font-size: 4rem;
-    color: #f4f4f4;
     padding: 45vh 0;
     width: 100%;
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: relative;
 }
-
 .about-name {
     background: url('./assets/background.jpeg');
-    text-align: center;
-    font-size: 4rem;
-    color: #f4f4f4;
     padding: 20vh 0;
     width: 100%;
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: relative;
+}
+
+.home-name > h1 {
+    text-align: center;
+    font-size: 3rem;
+    color: #f4f4f4;
+}
+.about-name > h1 {
+    text-align: center;
+    font-size: 3rem;
+    color: #f4f4f4;
 }
 
 ul {
@@ -57,16 +58,10 @@ ul {
     padding: 0;
 }
 
-.nav-scrolled {
-    background-color: rgba(0,0,0,0.9);
-    color: rgb(88, 123, 87);
-   
-}
-
 .links {
-    display: flex;
-    column-gap: 40px;
-    
+    display: none;
+    column-gap: 20px;
+    padding: 0px 50px;
 }
 
 .link:hover {
@@ -74,20 +69,20 @@ ul {
 }
 
 .logo {
-    font-size: xx-large;
+    display: none;
   }
 
 .introduction > p {
-    font-size: 3.5rem;
-    inline-size: 30%;
-    margin-left: 150px;
-    margin-top: 100px;
+    text-align: center;
+    font-size: 2rem;
+    padding: 30px;
+    margin: auto;
 }
 
 .description {
     text-align: center;
     font-size: 1.5rem;
-    margin: 100px;
+    margin: 30px;
     line-height: 1.5;
 }
 
@@ -95,25 +90,20 @@ ul {
     position: static;
     display: block;
     border-radius: 100%;
-    width: 600px;
-    margin-left: 1000px;
-    margin-top: -400px;
-
+    width: 80%;
+    margin: auto;
 }
 
 .about-profile-pic {
     position: static;
     display: block;
-    width: 600px;
-    height: 600px;
-    margin: auto;
-    padding: 30px;
-    
+    width: 100%;
+    margin: auto; 
 }
 
 .about {
     text-align: center;
-    margin: 20px 50px;
+    margin: 30px 50px;
 }
 
 .about-intro {
@@ -125,16 +115,16 @@ ul {
 .about-description {
     font-size: 1.5rem;
     line-height: 1.5;
-    padding: 30px
+    padding: 35px;
 }
 
 .resume {
     display: block;
     margin: auto;
-    width: 55%;
+    width: 100%;
 }
 .footer {
-    font-size: 1.25rem;
+    font-size: 1rem;
     text-align: center;
     padding: 20px;
 }
@@ -146,7 +136,232 @@ ul {
     line-height: 2;
 }
 .footer > p > a:link {
+    font-size: 1rem;
     color:#4d4a38;
     text-decoration: underline;
 }
 
+@media only screen and (max-width: 820px) { 
+    .logo {
+        display: block;
+        font-size: xx-large;
+      }
+    .links {
+        display: flex;
+        column-gap: 40px;
+        padding: 0px 50px;
+    }
+    .link:hover {
+        color: #f4f4f4;
+    }
+    .profile-pic {
+        position: static;
+        display: block;
+        border-radius: 100%;
+        width: 80%;
+        margin: auto;
+    }
+    .about-profile-pic {
+        position: static;
+        display: block;
+        width: 100%;
+        margin: auto;
+    }
+    .introduction > p {
+        text-align: center;
+        font-size: 2rem;
+        padding: 30px;
+        margin: auto;
+    }
+    .description {
+        text-align: center;
+        font-size: 2rem;
+        margin: 30px;
+        line-height: 1.5;
+    }
+    
+    .home-name > h1 {
+        text-align: center;
+        font-size: 6rem;
+        color: #f4f4f4;
+    }
+    .about-name > h1 {
+        text-align: center;
+        font-size: 6rem;
+        color: #f4f4f4;
+    }
+    .about-name {
+        background: url('./assets/background.jpeg');
+        padding: 45vh 0;
+        width: 100%;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: relative;
+    }
+    .resume {
+        display: block;
+        margin: auto;
+        width: 100%;
+    }
+    .footer {
+        font-size: 1rem;
+        text-align: center;
+        padding: 20px;
+    }
+    
+    .footer > a {
+        color:#4d4a38;
+        padding: 10px;
+        text-decoration: underline;
+        line-height: 2;
+    }
+    .footer > p > a:link {
+        font-size: 1rem;
+        color:#4d4a38;
+        text-decoration: underline;
+    }
+}
+@media only screen and (max-width: 820px){
+    .header {
+        background-color:rgba(0,0,0,0.9);
+    }
+    .logo {
+        display: block;
+        font-size: xx-large;
+      }
+    .links {
+        position: fixed;
+        left: -100%;
+        top: 70px;
+        gap: 0;
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+        transition: 0.3s;
+        margin: 16px 0;
+    }
+    .link-item {
+        margin: 16px 0;
+    }
+    .links.active{
+        left: 0;
+        padding: 0;
+        background-color:rgba(0,0,0,0.9);
+    }
+    .link:hover {
+        color: rgb(88, 123, 87);
+    }
+    .hamburger {
+        display: block;
+        padding: 0 65px;
+    }
+    .bar {
+        display: block;
+        width: 25px;
+        height: 5px;
+        margin: 5px auto;
+        transition: all 0.3s ease-in-out;
+        background-color: white;
+    }
+    .hamburger.active .bar:nth-child(2){
+        opacity: 0;
+    }
+    .hamburger.active .bar:nth-child(1){
+        transform: translateY(8px) rotate(45deg);
+    }
+    .hamburger.active .bar:nth-child(3){
+        transform: translateY(-8px) rotate(-45deg);
+    }
+}
+@media only screen and (min-width: 1000px) { 
+    .logo {
+        display: block;
+        font-size: xx-large;
+      }
+    .profile-pic {
+        position: static;
+        display: block;
+        border-radius: 100%;
+        width: 40%;
+        margin-left: 1000px;
+        margin-top: -25%;
+    }
+    .about-profile-pic {
+        position: static;
+        display: block;
+        width: 600px;
+        height: 600px;
+        margin: auto;
+        padding: 30px;
+    }
+    .introduction > p {
+        font-size: 3.5rem;
+        inline-size: 30%;
+        margin-left: 5%;
+        margin-top: 10%;
+    }
+    .home-name > h1 {
+        text-align: center;
+        font-size: 8rem;
+        color: #f4f4f4;
+    }
+    .about-name > h1 {
+        text-align: center;
+        font-size: 8rem;
+        color: #f4f4f4;
+    }
+    .about-name {
+        background: url('./assets/background.jpeg');
+        padding: 45vh 0;
+        width: 100%;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: relative;
+    }
+    .links {
+        display: flex;
+        column-gap: 40px;
+        padding: 0px 50px;
+    }
+    .link:hover {
+        color: #f4f4f4;
+    }
+    .hamburger {
+        display: none;
+        cursor: pointer;
+    }
+    .bar {
+        display: block;
+        width: 25px;
+        height: 3px;
+        margin: 5px auto;
+        transition: all 0.3s ease-in-out;
+        background-color: white;
+    }
+    .nav-scrolled {
+        background-color: rgba(0,0,0,0.9);
+        color: rgb(88, 123, 87);
+    }
+    .resume {
+        display: block;
+        margin: auto;
+        width: 55%;
+    }
+    .footer {
+        font-size: 1.25rem;
+        text-align: center;
+        padding: 20px;
+    }
+    
+    .footer > a {
+        color:#4d4a38;
+        padding: 10px;
+        text-decoration: underline;
+        line-height: 2;
+    }
+    .footer > p > a:link {
+        font-size: 1.25rem;
+        color:#4d4a38;
+        text-decoration: underline;
+    }
+}
