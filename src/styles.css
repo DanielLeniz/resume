@@ -262,7 +262,7 @@ ul {
         transform: translateY(-8px) rotate(-45deg);
     }
 }
-@media only screen and (min-width: 1000px) { 
+@media only screen and (min-width: 821px) { 
     .logo {
         display: block;
         font-size: xx-large;
