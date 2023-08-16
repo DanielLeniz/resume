@@ -10,3 +10,5 @@ cypress.config.js
 package.json
 package-lock.json
 src/counter.js
+.gitattributes
+.terraform
