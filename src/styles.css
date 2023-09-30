@@ -11,6 +11,7 @@
     padding: 25px 30px;
     position: fixed;
     width: 100%;
+    z-index: 1;
     transition: all .5s;
 }
 
@@ -24,17 +25,35 @@ a {
     text-decoration: none;
     color: inherit;
 }
-
+.grid-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 600px 600px;
+    grid-template-rows: auto;
+}
+.grid-container > div {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: rgb(88, 123, 87);
+    text-align: center;
+    padding: 20px;
+}
+.grid-container > div > img {
+    position: static;
+    display: block;
+    width: 100%;
+    margin: auto;
+    padding: 10px;
+}
+.grid-description {
+    font-size: 1rem;
+    color: #777;
+    margin: 25px;
+}
 .home-name {
     background: url('./assets/background.jpeg');
     padding: 45vh 0;
-    width: 100%;
-    background-size: cover;
-    background-repeat: no-repeat;
-}
-.about-name {
-    background: url('./assets/background.jpeg');
-    padding: 20vh 0;
     width: 100%;
     background-size: cover;
     background-repeat: no-repeat;
@@ -44,6 +63,14 @@ a {
     text-align: center;
     font-size: 3rem;
     color: #f4f4f4;
+    overflow: hidden;
+    white-space: nowrap;
+    margin: 0 auto;
+    transition: 1s;
+    animation: typing 3.5s steps(60, end);
+}
+.home-name > h1:hover {
+    transform: scale(1.2);
 }
 .about-name > h1 {
     text-align: center;
@@ -66,6 +93,7 @@ ul {
 
 .link:hover {
     color: #f4f4f4;
+    border-bottom: 3px solid rgb(88, 123, 87);
 }
 
 .logo {
@@ -74,24 +102,62 @@ ul {
 
 .introduction > p {
     text-align: center;
-    font-size: 2rem;
     padding: 30px;
     margin: auto;
+    transition: transform .2s;
+}
+.introduction > p:hover {
+    transform: scale(1.2);
+    color: rgb(88, 123, 87);
 }
 
 .description {
     text-align: center;
-    font-size: 1.5rem;
-    margin: 30px;
-    line-height: 1.5;
+    font-size: 2.5rem;
+    margin: 50px;
 }
-
+input[type=text], select, textarea {
+    width: 100%; /* Full width */
+    padding: 12px; /* Some padding */ 
+    border: 1px solid #ccc; /* Gray border */
+    border-radius: 4px; /* Rounded borders */
+    box-sizing: border-box; /* Make sure that padding and width stays in place */
+    margin-top: 6px; /* Add a top margin */
+    margin-bottom: 16px; /* Bottom margin */
+    resize: vertical /* Allow the user to vertically resize the textarea (not horizontally) */
+  }
+  
+  /* Style the submit button with a specific background color etc */
+  input[type=submit] {
+    background-color: rgb(88, 123, 87);
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  /* When moving the mouse over the submit button, add a darker green color */
+  input[type=submit]:hover {
+    background-color: rgb(47, 66, 46);
+  }
+  
+  /* Add a background color and some padding around the form */
+  .container {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+  }
 .profile-pic {
     position: static;
     display: block;
     border-radius: 100%;
     width: 80%;
     margin: auto;
+    transition: transform .2s;
+}
+.profile-pic:hover {
+    transform: scale(1.1);
 }
 
 .about-profile-pic {
@@ -107,7 +173,7 @@ ul {
 }
 
 .about-intro {
-    font-size: 2rem;
+    font-size: 3rem;
     color:rgb(88, 123, 87);
     padding: 35px;
 }
@@ -140,6 +206,16 @@ ul {
     color:#4d4a38;
     text-decoration: underline;
 }
+
+@keyframes typing {
+    from {
+        max-width: 0;
+    }
+    to {
+        max-width: 100%;
+    }
+    }
+
 
 @media only screen and (max-width: 820px) { 
     .header {
@@ -174,6 +250,13 @@ ul {
     .link:hover {
         color: rgb(88, 123, 87);
     }
+    .grid-container {
+        max-width: 1200px;
+        margin: auto;
+        display: grid;
+        grid-template-columns: auto;
+        
+    }
     .profile-pic {
         position: static;
         display: block;
@@ -204,6 +287,7 @@ ul {
         text-align: center;
         font-size: 6rem;
         color: #f4f4f4;
+        text-wrap: wrap;
     }
     .about-name > h1 {
         text-align: center;
@@ -301,7 +385,7 @@ ul {
     }
     .about-name {
         background: url('./assets/background.jpeg');
-        padding: 45vh 0;
+        padding: 20vh 0;
         width: 100%;
         background-size: cover;
         background-repeat: no-repeat;
