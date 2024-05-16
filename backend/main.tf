@@ -17,10 +17,10 @@ resource "aws_dynamodb_table" "view-count-table" {
 # ------------------------------------
 
 # Execution Role
-resource "aws_lambda_function" "myfunc" {
+resource "aws_lambda_function" "mylambdafunc" {
   filename         = data.archive_file.zip_the_python_code.output_path
   source_code_hash = data.archive_file.zip_the_python_code.output_base64sha256
-  function_name    = "myfunc"
+  function_name    = "mylambdafunc"
   role             = aws_iam_role.lambda_iam.arn
   handler          = "lambda_function.lambda_handler"
   runtime          = "python3.8"
@@ -130,7 +130,7 @@ resource "aws_api_gateway_integration" "api-lambda-post-integration" {
   http_method             = aws_api_gateway_method.api-post-method.http_method
   integration_http_method = "POST"
   type                    = "AWS"
-  uri                     = aws_lambda_function.myfunc.invoke_arn
+  uri                     = aws_lambda_function.mylambdafunc.invoke_arn
 }
 resource "aws_api_gateway_integration" "api-lambda-get-integration" {
   rest_api_id             = aws_api_gateway_rest_api.resume-api.id
@@ -138,7 +138,7 @@ resource "aws_api_gateway_integration" "api-lambda-get-integration" {
   http_method             = aws_api_gateway_method.api-get-method.http_method
   integration_http_method = "GET"
   type                    = "AWS"
-  uri                     = aws_lambda_function.myfunc.invoke_arn
+  uri                     = aws_lambda_function.lambdafunc.invoke_arn
 }
 
 
@@ -172,7 +172,7 @@ resource "aws_api_gateway_stage" "api-stage" {
 resource "aws_lambda_permission" "lambda-permission-to-api" {
   statement_id  = "AllowAPIGatewayInvoke"
   action        = "lambda:InvokeFunction"
-  function_name = "myfunc"
+  function_name = "mylambdafunc"
   principal     = "apigateway.amazonaws.com"
 
   source_arn = "${aws_api_gateway_rest_api.resume-api.execution_arn}/${aws_api_gateway_stage.api-stage.stage_name}/${aws_api_gateway_method.api-post-method.http_method}/${aws_api_gateway_resource.api-resource.path_part}"
@@ -184,7 +184,7 @@ resource "aws_lambda_permission" "lambda-permission-to-api" {
 # -----------------------------------------
 
 resource "aws_lambda_function_url" "url1" {
-  function_name      = aws_lambda_function.myfunc.function_name
+  function_name      = aws_lambda_function.lambdafunc.function_name
   authorization_type = "NONE"
 
   cors {
